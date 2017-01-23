@@ -1,0 +1,20 @@
+{
+  "name": "charlie-work",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node install.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-shell": "^2.1.0",
+	"gulp": "3.9.1",
+    "gulp-shell": "^0.5.2",
+    "xcolor": "^0.1.0"
+  }
+}
