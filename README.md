@@ -11,6 +11,10 @@ The idea is to give developers a unified interfaces for defining tasks (Grunt, G
 ###
 After installing, samples of usage can be found in ./_charlieWork, ./_charlieWork-CLI-example.sh, and ./_charlieWork-programatic-example.js
 #
-######Install with "npm install {{path to directory}}"
-#
+######Install with "npm install charlie-work"
+####
+https://www.npmjs.com/package/charlie-work
+####
+https://github.com/adammeola01/charlie-work
+####
 &#35;AwlaysSunnyInPhiladelphia
