@@ -5,4 +5,4 @@
 
 # Task arguments not supported from CLI
 
-node charlie exampleGruntTask exampleNodeTask exampleGulpTask -_charlieWork
+node charlie exampleGruntTask exampleNodeTask exampleGulpTask -_charlieWork-examples
