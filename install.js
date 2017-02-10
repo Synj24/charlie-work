@@ -26,7 +26,7 @@ function copyRecursiveSync(src, dest) {
     }
 }
 var folderExists = fs.existsSync(defaultFolder);
-if (!folderExists) copyRecursiveSync(`${__dirname}/unload/_charlieWork`, defaultFolder);
+if (!folderExists) copyRecursiveSync(`${__dirname}/unload/_charlieWork-examples`, defaultFolder);
 if(!locationExists(`${projectRoot}/_charlieWork-CLI-example.sh`)) console.log('exists');
 
 if(!locationExists(projectRoot+'/_charlieWork-CLI-example.sh')){
