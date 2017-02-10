@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var projectRoot = process.argv[1].split('/node_modules')[0];
-var defaultFolder = `${projectRoot}/_charlieWork`;
+var defaultFolder = `${projectRoot}/_charlieWork-examples`;
 //
 // console.log(projectRoot);
 function locationExists(a) {
