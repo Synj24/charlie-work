@@ -72,7 +72,10 @@ module.exports = function(name, args, dir, childProcessRuturn, cb) {
             var child = cp.fork(__dirname + '/gruntWork.js', [taskAtHand.path, JSON.stringify(args)]);
             child.on('exit', function(m) {
                 cb();
-                childProcessRuturn(child);
+				if(childProcessRuturn){
+					if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
+				}
+
             });
             // require('./grunter.js')(taskAtHand, processExit, args, cb);
             break;
@@ -81,14 +84,18 @@ module.exports = function(name, args, dir, childProcessRuturn, cb) {
             var child = cp.fork(__dirname + '/gulpWork.js', [taskAtHand.path, JSON.stringify(args)]);
             child.on('exit', function(m) {
                 cb();
-                childProcessRuturn(child);
+				if(childProcessRuturn){
+					if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
+				}
             });
             break;
         case 'node':
         var child = cp.fork(__dirname+'/noder.js', [JSON.stringify(args), taskAtHand.path]);
             child.on('exit', function(m) {
 			    cb();
-			    childProcessRuturn(child);
+				if(childProcessRuturn){
+					if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
+				}
 			});
 			break;
     }
