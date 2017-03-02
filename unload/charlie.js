@@ -5,7 +5,7 @@ var TaskArray = [];
 var taskFolder = null;
 for (i = 0; i < args.length; i++) {
     if (args[i].substr(0, 1) !== '-') TaskArray.push(args[i]);
-    else taskFolder = args[i].replace(/-/g, '');
+    else taskFolder = args[i].replace('-', '');
 }
 if (taskFolder === null) taskFolder = '_charlieWork';
 taskFolder = __dirname + '/' + taskFolder;

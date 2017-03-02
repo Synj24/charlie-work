@@ -36,7 +36,7 @@ var scan = function(dir) {
     });
     return results;
 };
-module.exports = function(name, args, dir, cb) {
+module.exports = function(name, args, dir, childProcessRuturn, cb) {
 	var processExit = false;
     var tasks = scan(dir);
     var taskAtHand = null;
@@ -72,11 +72,7 @@ module.exports = function(name, args, dir, cb) {
             var child = cp.fork(__dirname + '/gruntWork.js', [taskAtHand.path, JSON.stringify(args)]);
             child.on('exit', function(m) {
                 cb();
-                if (processExit) {
-                    setTimeout(function() {
-                        process.exit();
-                    }, 100);
-                }
+                childProcessRuturn(child);
             });
             // require('./grunter.js')(taskAtHand, processExit, args, cb);
             break;
@@ -85,22 +81,14 @@ module.exports = function(name, args, dir, cb) {
             var child = cp.fork(__dirname + '/gulpWork.js', [taskAtHand.path, JSON.stringify(args)]);
             child.on('exit', function(m) {
                 cb();
-                if (processExit) {
-                    setTimeout(function() {
-                        process.exit();
-                    }, 100);
-                }
+                childProcessRuturn(child);
             });
             break;
         case 'node':
         var child = cp.fork(__dirname+'/noder.js', [JSON.stringify(args), taskAtHand.path]);
             child.on('exit', function(m) {
 			    cb();
-			    if (processExit) {
-			        setTimeout(function() {
-			            process.exit();
-			        }, 100);
-			    }
+			    childProcessRuturn(child);
 			});
 			break;
     }
