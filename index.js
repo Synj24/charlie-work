@@ -71,37 +71,36 @@ module.exports = function(name, args, dir, childProcessRuturn, cb) {
         case 'grunt':
             // var child = cp.fork(__dirname+'/gruntWork.js', ['bobert']);
             child = cp.fork(__dirname + '/gruntWork.js', [taskAtHand.path, JSON.stringify(args)]);
+			if(childProcessRuturn){
+				if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
+			}
             child.on('exit', function(m) {
 				if(cb){
 					if(typeof cb == 'function') cb();
 				}
-				if(childProcessRuturn){
-					if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
-				}
-
             });
             // require('./grunter.js')(taskAtHand, processExit, args, cb);
             break;
         case 'gulp':
 		charlieWork.args = args;
             child = cp.fork(__dirname + '/gulpWork.js', [taskAtHand.path, JSON.stringify(args)]);
+			if(childProcessRuturn){
+				if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
+			}
             child.on('exit', function(m) {
 				if(cb){
 					if(typeof cb == 'function') cb();
-				}
-				if(childProcessRuturn){
-					if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
 				}
             });
             break;
         case 'node':
         	child = cp.fork(__dirname+'/noder.js', [JSON.stringify(args), taskAtHand.path]);
+			if(childProcessRuturn){
+				if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
+			}
             child.on('exit', function(m) {
 				if(cb){
 					if(typeof cb == 'function') cb();
-				}
-				if(childProcessRuturn){
-					if(typeof childProcessRuturn == 'function') childProcessRuturn(child);
 				}
 			});
 			break;
